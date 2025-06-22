@@ -30,43 +30,38 @@ HAZARD_CATEGORIES = {
         "min_height": 4,  # feet - OSHA requires fall protection above 4 feet
         "severity": "high"
     },
-    "trip_hazards": {
-        "objects": {"bottle", "cord", "box", "suitcase", "backpack", "bag", "wire", "cable"},
-        "ground_level": True,  # Objects at ground level are trip hazards
-        "severity": "high"  # Increased severity for trip hazards
+    "floor_obstacles": {  # New category specifically for floor hazards
+        "objects": {"bag", "backpack", "suitcase", "box", "cord", "cable", "bottle"},
+        "severity": "critical",  # Increased severity for floor obstacles
+        "ground_level": True
     },
     "sharp_objects": {
         "objects": {"knife", "scissors", "tool", "saw", "drill", "blade", "cutter"},
-        "confidence_threshold": 0.3,  # Lower threshold specifically for sharp objects
+        "confidence_threshold": 0.3,
         "safe_handling": {
-            "required_context": ["hand", "person"],  # Objects that need proper handling context
-            "safe_distance": 50,  # pixels - safe handling distance threshold
+            "required_context": ["hand", "person"],
+            "safe_distance": 50,
             "severity": {
-                "unattended": "critical",  # Highest severity when unattended
-                "improper_handling": "high",  # High severity when not properly handled
-                "proper_handling": "medium"  # Medium severity even when properly handled
+                "unattended": "critical",
+                "improper_handling": "high",
+                "proper_handling": "medium"
             }
         }
     },
     "fire_hazards": {
         "objects": {"fire", "smoke", "cigarette", "matches", "lighter"},
-        "always_hazard": True,  # These are always considered hazardous
+        "always_hazard": True,
         "severity": "critical"
     },
     "electrical_hazards": {
         "objects": {"cord", "wire", "cable", "outlet", "power strip", "electrical panel"},
         "context_sensitive": True,
-        "severity": "high"  # Increased severity for electrical hazards
+        "severity": "high"
     },
     "chemical_hazards": {
         "objects": {"bottle", "container", "spray", "tank"},
         "context_sensitive": True,
         "severity": "high"
-    },
-    "obstacles": {
-        "objects": {"chair", "box", "equipment", "furniture"},  # Common workplace obstacles
-        "proximity_threshold": 100,  # pixels - distance to consider as obstacle
-        "severity": "high"  # High severity for obstacles in walkways
     }
 }
 
@@ -79,12 +74,14 @@ HAZARD_COMBINATIONS = [
     {"person", "scaffold"},
     {"person", "stairs"},
     
-    # Trip hazards - objects in walkways
-    {"person", "cord"},
-    {"person", "wire"},
-    {"person", "cable"},
-    {"person", "bottle"},
-    {"person", "box"},
+    # Floor obstacles - objects that shouldn't be on the floor
+    {"bag"},
+    {"backpack"},
+    {"suitcase"},
+    {"box"},
+    {"cord"},
+    {"cable"},
+    {"bottle"},
     
     # Sharp object hazards
     {"person", "knife"},
@@ -277,14 +274,30 @@ def classify_hazard(labels, boxes):
     severity_levels = {"critical": 4, "high": 3, "medium": 2, "low": 1}
     has_person = "person" in labels
     
-    # First check for immediate hazards that don't require human presence
+    # Check for floor obstacles first
+    floor_objects = HAZARD_CATEGORIES["floor_obstacles"]["objects"]
+    for label in labels:
+        if label in floor_objects:
+            if not is_hazard_in_cooldown("floor_obstacles"):
+                hazard_types.append("floor obstacles")  # Using space instead of underscore
+                update_hazard_timestamp("floor_obstacles")
+                max_severity = "critical"  # Floor obstacles are always critical
+                critical_alert_count += 1
+                logger.info(f"Critical alert count (floor obstacle): {critical_alert_count}")
+                if critical_alert_count >= 5:
+                    if trigger_webhook():
+                        critical_alert_count = 0
+    
+    # Check for immediate hazards that don't require human presence
     for category, rules in HAZARD_CATEGORIES.items():
         if rules.get("always_hazard", False):
             for obj in rules["objects"]:
                 if obj in labels:
                     # Check cooldown before adding hazard
                     if not is_hazard_in_cooldown(category):
-                        hazard_types.append(category)
+                        # Convert category name to readable format
+                        readable_category = category.replace("_", " ")
+                        hazard_types.append(readable_category)
                         update_hazard_timestamp(category)
                         if rules.get("severity") == "critical":
                             critical_alert_count += 1
