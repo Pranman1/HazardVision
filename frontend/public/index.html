@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HazardVision - Workplace Safety Monitoring</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>HazardVision</h1>
+    
+    <div class="controls">
+      <button id="toggleBtn">Start Detection</button>
+      <span id="fpsDisplay" class="fps-display"></span>
+    </div>
+
+    <div class="video-container">
+      <div class="video-wrapper">
+        <h3>Live Camera Feed</h3>
+        <video id="video" autoplay></video>
+      </div>
+      <div class="video-wrapper">
+        <h3>Hazard Detection</h3>
+        <img id="annotatedImg" src="" alt="Waiting for detection...">
+      </div>
+    </div>
+
+    <div id="hazardInfo" class="hazard-info">
+      <div id="hazardTypes"></div>
+      <div id="hazardSeverity"></div>
+    </div>
+
+    <div class="hazard-legend">
+      <h3>Hazard Types</h3>
+      <div class="legend-item">
+        <span class="legend-box red"></span>
+        <span>Fall/Sharp Hazards</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-box orange"></span>
+        <span>Trip Hazards</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-box yellow"></span>
+        <span>Electrical Hazards</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-box green"></span>
+        <span>Safe</span>
+      </div>
+    </div>
+
+    <div class="log-container">
+      <h3>Hazard Log</h3>
+      <table id="logTable">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Objects</th>
+            <th>Hazard Types</th>
+            <th>Severity</th>
+            <th>Snapshot</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

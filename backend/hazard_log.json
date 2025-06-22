@@ -1,0 +1,3389 @@
+[
+    {
+        "timestamp": "20250622-071240",
+        "objects": [
+            "person"
+        ],
+        "snapshot": "/snapshots/snapshot\\20250622-071240.jpg"
+    },
+    {
+        "timestamp": "20250622-071249",
+        "objects": [
+            "person"
+        ],
+        "snapshot": "/snapshots/snapshot\\20250622-071249.jpg"
+    },
+    {
+        "timestamp": "20250622-071249",
+        "objects": [
+            "person"
+        ],
+        "snapshot": "/snapshots/snapshot\\20250622-071249.jpg"
+    },
+    {
+        "timestamp": "20250622-071249",
+        "objects": [
+            "person"
+        ],
+        "snapshot": "/snapshots/snapshot\\20250622-071249.jpg"
+    },
+    {
+        "timestamp": "20250622-071250",
+        "objects": [
+            "person"
+        ],
+        "snapshot": "/snapshots/snapshot\\20250622-071250.jpg"
+    },
+    {
+        "timestamp": "20250622-071250",
+        "objects": [
+            "person"
+        ],
+        "snapshot": "/snapshots/snapshot\\20250622-071250.jpg"
+    },
+    {
+        "timestamp": "20250622-071323",
+        "objects": [
+            "bottle"
+        ],
+        "snapshot": "/snapshots/snapshot\\20250622-071323.jpg"
+    },
+    {
+        "timestamp": "20250622-071327",
+        "objects": [],
+        "snapshot": "/snapshots/snapshot\\20250622-071327.jpg"
+    },
+    {
+        "timestamp": "20250622-071342",
+        "objects": [],
+        "snapshot": "/snapshots/snapshot\\20250622-071342.jpg"
+    },
+    {
+        "timestamp": "20250622-071352",
+        "objects": [
+            "bed",
+            "bed",
+            "bed"
+        ],
+        "snapshot": "/snapshots/snapshot\\20250622-071352.jpg"
+    },
+    {
+        "timestamp": "20250622-071406",
+        "objects": [
+            "person",
+            "chair",
+            "couch",
+            "chair"
+        ],
+        "snapshot": "/snapshots/snapshot\\20250622-071406.jpg"
+    },
+    {
+        "timestamp": "20250622-072624",
+        "objects": [
+            "person"
+        ],
+        "snapshot": "/snapshots/C:\\Users\\prana\\OneDrive\\tess\\HazardVision\\snapshot\\20250622-072624.jpg"
+    },
+    {
+        "timestamp": "20250622-072701",
+        "objects": [
+            "chair",
+            "bed"
+        ],
+        "snapshot": "/snapshots/C:\\Users\\prana\\OneDrive\\tess\\HazardVision\\snapshot\\20250622-072701.jpg"
+    },
+    {
+        "timestamp": "20250622-073944",
+        "objects": [
+            "person",
+            "scissors",
+            "bird"
+        ],
+        "snapshot": "/snapshots/C:\\Users\\prana\\OneDrive\\tess\\HazardVision\\snapshot\\20250622-073944.jpg"
+    },
+    {
+        "timestamp": "20250622-073944",
+        "objects": [
+            "person",
+            "chair",
+            "scissors",
+            "bird"
+        ],
+        "snapshot": "/snapshots/C:\\Users\\prana\\OneDrive\\tess\\HazardVision\\snapshot\\20250622-073944.jpg"
+    },
+    {
+        "timestamp": "20250622-073946",
+        "objects": [
+            "person",
+            "scissors",
+            "bird"
+        ],
+        "snapshot": "/snapshots/C:\\Users\\prana\\OneDrive\\tess\\HazardVision\\snapshot\\20250622-073946.jpg"
+    },
+    {
+        "timestamp": "20250622-073947",
+        "objects": [
+            "person",
+            "scissors",
+            "bird"
+        ],
+        "snapshot": "/snapshots/C:\\Users\\prana\\OneDrive\\tess\\HazardVision\\snapshot\\20250622-073947.jpg"
+    },
+    {
+        "timestamp": "20250622-073948",
+        "objects": [
+            "person",
+            "scissors"
+        ],
+        "snapshot": "/snapshots/C:\\Users\\prana\\OneDrive\\tess\\HazardVision\\snapshot\\20250622-073948.jpg"
+    },
+    {
+        "timestamp": "20250622-073958",
+        "objects": [
+            "person",
+            "scissors"
+        ],
+        "snapshot": "/snapshots/C:\\Users\\prana\\OneDrive\\tess\\HazardVision\\snapshot\\20250622-073958.jpg"
+    },
+    {
+        "timestamp": "20250622-074341",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/C:\\Users\\prana\\OneDrive\\tess\\HazardVision\\snapshot\\20250622-074341.jpg"
+    },
+    {
+        "timestamp": "20250622-080556",
+        "objects": [
+            "person",
+            "scissors"
+        ],
+        "snapshot": "/snapshots/20250622-080556.jpg"
+    },
+    {
+        "timestamp": "20250622-080610",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-080610.jpg"
+    },
+    {
+        "timestamp": "20250622-082155",
+        "objects": [
+            "person",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-082155.jpg"
+    },
+    {
+        "timestamp": "20250622-082251",
+        "objects": [
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-082251.jpg"
+    },
+    {
+        "timestamp": "20250622-082256",
+        "objects": [
+            "person",
+            "chair",
+            "refrigerator"
+        ],
+        "snapshot": "/snapshots/20250622-082256.jpg"
+    },
+    {
+        "timestamp": "20250622-082258",
+        "objects": [
+            "person",
+            "chair",
+            "refrigerator"
+        ],
+        "snapshot": "/snapshots/20250622-082258.jpg"
+    },
+    {
+        "timestamp": "20250622-082258",
+        "objects": [
+            "person",
+            "refrigerator",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-082258.jpg"
+    },
+    {
+        "timestamp": "20250622-082351",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082351.jpg"
+    },
+    {
+        "timestamp": "20250622-082351",
+        "objects": [
+            "person",
+            "scissors",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082351.jpg"
+    },
+    {
+        "timestamp": "20250622-082351",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082351.jpg"
+    },
+    {
+        "timestamp": "20250622-082351",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082351.jpg"
+    },
+    {
+        "timestamp": "20250622-082352",
+        "objects": [
+            "person",
+            "scissors",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082352.jpg"
+    },
+    {
+        "timestamp": "20250622-082352",
+        "objects": [
+            "person",
+            "knife",
+            "microwave"
+        ],
+        "snapshot": "/snapshots/20250622-082352.jpg"
+    },
+    {
+        "timestamp": "20250622-082353",
+        "objects": [
+            "person",
+            "microwave",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082353.jpg"
+    },
+    {
+        "timestamp": "20250622-082354",
+        "objects": [
+            "person",
+            "microwave",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082354.jpg"
+    },
+    {
+        "timestamp": "20250622-082354",
+        "objects": [
+            "person",
+            "toothbrush",
+            "scissors"
+        ],
+        "snapshot": "/snapshots/20250622-082354.jpg"
+    },
+    {
+        "timestamp": "20250622-082356",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082356.jpg"
+    },
+    {
+        "timestamp": "20250622-082359",
+        "objects": [
+            "person",
+            "scissors"
+        ],
+        "snapshot": "/snapshots/20250622-082359.jpg"
+    },
+    {
+        "timestamp": "20250622-082405",
+        "objects": [
+            "person",
+            "toothbrush",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082405.jpg"
+    },
+    {
+        "timestamp": "20250622-082416",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082416.jpg"
+    },
+    {
+        "timestamp": "20250622-082420",
+        "objects": [
+            "person",
+            "knife",
+            "microwave"
+        ],
+        "snapshot": "/snapshots/20250622-082420.jpg"
+    },
+    {
+        "timestamp": "20250622-082421",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082421.jpg"
+    },
+    {
+        "timestamp": "20250622-082421",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082421.jpg"
+    },
+    {
+        "timestamp": "20250622-082421",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082421.jpg"
+    },
+    {
+        "timestamp": "20250622-082421",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082421.jpg"
+    },
+    {
+        "timestamp": "20250622-082424",
+        "objects": [
+            "person",
+            "knife",
+            "book"
+        ],
+        "snapshot": "/snapshots/20250622-082424.jpg"
+    },
+    {
+        "timestamp": "20250622-082425",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082425.jpg"
+    },
+    {
+        "timestamp": "20250622-082425",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082425.jpg"
+    },
+    {
+        "timestamp": "20250622-082437",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-082437.jpg"
+    },
+    {
+        "timestamp": "20250622-083917",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083917.jpg"
+    },
+    {
+        "timestamp": "20250622-083940",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083940.jpg"
+    },
+    {
+        "timestamp": "20250622-083941",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083941.jpg"
+    },
+    {
+        "timestamp": "20250622-083941",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083941.jpg"
+    },
+    {
+        "timestamp": "20250622-083942",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083942.jpg"
+    },
+    {
+        "timestamp": "20250622-083942",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083942.jpg"
+    },
+    {
+        "timestamp": "20250622-083942",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083942.jpg"
+    },
+    {
+        "timestamp": "20250622-083942",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083942.jpg"
+    },
+    {
+        "timestamp": "20250622-083943",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083943.jpg"
+    },
+    {
+        "timestamp": "20250622-083943",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-083943.jpg"
+    },
+    {
+        "timestamp": "20250622-084238",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084238.jpg"
+    },
+    {
+        "timestamp": "20250622-084239",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084239.jpg"
+    },
+    {
+        "timestamp": "20250622-084239",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084239.jpg"
+    },
+    {
+        "timestamp": "20250622-084240",
+        "objects": [
+            "person",
+            "apple",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084240.jpg"
+    },
+    {
+        "timestamp": "20250622-084240",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084240.jpg"
+    },
+    {
+        "timestamp": "20250622-084240",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084240.jpg"
+    },
+    {
+        "timestamp": "20250622-084240",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084240.jpg"
+    },
+    {
+        "timestamp": "20250622-084241",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084241.jpg"
+    },
+    {
+        "timestamp": "20250622-084241",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084241.jpg"
+    },
+    {
+        "timestamp": "20250622-084241",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084241.jpg"
+    },
+    {
+        "timestamp": "20250622-084241",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084241.jpg"
+    },
+    {
+        "timestamp": "20250622-084241",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084241.jpg"
+    },
+    {
+        "timestamp": "20250622-084241",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084241.jpg"
+    },
+    {
+        "timestamp": "20250622-084241",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084241.jpg"
+    },
+    {
+        "timestamp": "20250622-084242",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084242.jpg"
+    },
+    {
+        "timestamp": "20250622-084242",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084242.jpg"
+    },
+    {
+        "timestamp": "20250622-084242",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084242.jpg"
+    },
+    {
+        "timestamp": "20250622-084243",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084243.jpg"
+    },
+    {
+        "timestamp": "20250622-084243",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084243.jpg"
+    },
+    {
+        "timestamp": "20250622-084243",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084243.jpg"
+    },
+    {
+        "timestamp": "20250622-084243",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084243.jpg"
+    },
+    {
+        "timestamp": "20250622-084243",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084243.jpg"
+    },
+    {
+        "timestamp": "20250622-084243",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084243.jpg"
+    },
+    {
+        "timestamp": "20250622-084243",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084243.jpg"
+    },
+    {
+        "timestamp": "20250622-084243",
+        "objects": [
+            "person",
+            "knife",
+            "baseball bat"
+        ],
+        "snapshot": "/snapshots/20250622-084243.jpg"
+    },
+    {
+        "timestamp": "20250622-084244",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084244.jpg"
+    },
+    {
+        "timestamp": "20250622-084244",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084244.jpg"
+    },
+    {
+        "timestamp": "20250622-084244",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084244.jpg"
+    },
+    {
+        "timestamp": "20250622-084244",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084244.jpg"
+    },
+    {
+        "timestamp": "20250622-084244",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084244.jpg"
+    },
+    {
+        "timestamp": "20250622-084244",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084244.jpg"
+    },
+    {
+        "timestamp": "20250622-084245",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084245.jpg"
+    },
+    {
+        "timestamp": "20250622-084245",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084245.jpg"
+    },
+    {
+        "timestamp": "20250622-084245",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084245.jpg"
+    },
+    {
+        "timestamp": "20250622-084245",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084245.jpg"
+    },
+    {
+        "timestamp": "20250622-084245",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084245.jpg"
+    },
+    {
+        "timestamp": "20250622-084245",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084245.jpg"
+    },
+    {
+        "timestamp": "20250622-084245",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084245.jpg"
+    },
+    {
+        "timestamp": "20250622-084245",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084245.jpg"
+    },
+    {
+        "timestamp": "20250622-084246",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084246.jpg"
+    },
+    {
+        "timestamp": "20250622-084246",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084246.jpg"
+    },
+    {
+        "timestamp": "20250622-084246",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084246.jpg"
+    },
+    {
+        "timestamp": "20250622-084246",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084246.jpg"
+    },
+    {
+        "timestamp": "20250622-084246",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084246.jpg"
+    },
+    {
+        "timestamp": "20250622-084246",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084246.jpg"
+    },
+    {
+        "timestamp": "20250622-084246",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084246.jpg"
+    },
+    {
+        "timestamp": "20250622-084246",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084246.jpg"
+    },
+    {
+        "timestamp": "20250622-084247",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084247.jpg"
+    },
+    {
+        "timestamp": "20250622-084247",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084247.jpg"
+    },
+    {
+        "timestamp": "20250622-084247",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084247.jpg"
+    },
+    {
+        "timestamp": "20250622-084247",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084247.jpg"
+    },
+    {
+        "timestamp": "20250622-084247",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084247.jpg"
+    },
+    {
+        "timestamp": "20250622-084247",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084247.jpg"
+    },
+    {
+        "timestamp": "20250622-084248",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084248.jpg"
+    },
+    {
+        "timestamp": "20250622-084248",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084248.jpg"
+    },
+    {
+        "timestamp": "20250622-084248",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084248.jpg"
+    },
+    {
+        "timestamp": "20250622-084248",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084248.jpg"
+    },
+    {
+        "timestamp": "20250622-084248",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084248.jpg"
+    },
+    {
+        "timestamp": "20250622-084248",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084248.jpg"
+    },
+    {
+        "timestamp": "20250622-084248",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084248.jpg"
+    },
+    {
+        "timestamp": "20250622-084248",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084248.jpg"
+    },
+    {
+        "timestamp": "20250622-084249",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084249.jpg"
+    },
+    {
+        "timestamp": "20250622-084249",
+        "objects": [
+            "knife",
+            "person",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084249.jpg"
+    },
+    {
+        "timestamp": "20250622-084249",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084249.jpg"
+    },
+    {
+        "timestamp": "20250622-084249",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084249.jpg"
+    },
+    {
+        "timestamp": "20250622-084249",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084249.jpg"
+    },
+    {
+        "timestamp": "20250622-084249",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084249.jpg"
+    },
+    {
+        "timestamp": "20250622-084249",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084249.jpg"
+    },
+    {
+        "timestamp": "20250622-084250",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084250.jpg"
+    },
+    {
+        "timestamp": "20250622-084250",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084250.jpg"
+    },
+    {
+        "timestamp": "20250622-084250",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084250.jpg"
+    },
+    {
+        "timestamp": "20250622-084250",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084250.jpg"
+    },
+    {
+        "timestamp": "20250622-084250",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084250.jpg"
+    },
+    {
+        "timestamp": "20250622-084250",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084250.jpg"
+    },
+    {
+        "timestamp": "20250622-084251",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084251.jpg"
+    },
+    {
+        "timestamp": "20250622-084251",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084251.jpg"
+    },
+    {
+        "timestamp": "20250622-084251",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084251.jpg"
+    },
+    {
+        "timestamp": "20250622-084251",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084251.jpg"
+    },
+    {
+        "timestamp": "20250622-084251",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084251.jpg"
+    },
+    {
+        "timestamp": "20250622-084251",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084251.jpg"
+    },
+    {
+        "timestamp": "20250622-084251",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084251.jpg"
+    },
+    {
+        "timestamp": "20250622-084252",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084252.jpg"
+    },
+    {
+        "timestamp": "20250622-084252",
+        "objects": [
+            "person",
+            "knife",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084252.jpg"
+    },
+    {
+        "timestamp": "20250622-084252",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084252.jpg"
+    },
+    {
+        "timestamp": "20250622-084252",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084252.jpg"
+    },
+    {
+        "timestamp": "20250622-084252",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084252.jpg"
+    },
+    {
+        "timestamp": "20250622-084252",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084252.jpg"
+    },
+    {
+        "timestamp": "20250622-084252",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084252.jpg"
+    },
+    {
+        "timestamp": "20250622-084252",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084252.jpg"
+    },
+    {
+        "timestamp": "20250622-084252",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084252.jpg"
+    },
+    {
+        "timestamp": "20250622-084253",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084253.jpg"
+    },
+    {
+        "timestamp": "20250622-084253",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084253.jpg"
+    },
+    {
+        "timestamp": "20250622-084253",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084253.jpg"
+    },
+    {
+        "timestamp": "20250622-084253",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084253.jpg"
+    },
+    {
+        "timestamp": "20250622-084253",
+        "objects": [
+            "person",
+            "knife",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084253.jpg"
+    },
+    {
+        "timestamp": "20250622-084253",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084253.jpg"
+    },
+    {
+        "timestamp": "20250622-084254",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084254.jpg"
+    },
+    {
+        "timestamp": "20250622-084255",
+        "objects": [
+            "person",
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084255.jpg"
+    },
+    {
+        "timestamp": "20250622-084255",
+        "objects": [
+            "person",
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084255.jpg"
+    },
+    {
+        "timestamp": "20250622-084255",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084255.jpg"
+    },
+    {
+        "timestamp": "20250622-084256",
+        "objects": [
+            "person",
+            "knife"
+        ],
+        "snapshot": "/snapshots/20250622-084256.jpg"
+    },
+    {
+        "timestamp": "20250622-084333",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084333.jpg"
+    },
+    {
+        "timestamp": "20250622-084333",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084333.jpg"
+    },
+    {
+        "timestamp": "20250622-084333",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084333.jpg"
+    },
+    {
+        "timestamp": "20250622-084334",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084334.jpg"
+    },
+    {
+        "timestamp": "20250622-084334",
+        "objects": [
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084334.jpg"
+    },
+    {
+        "timestamp": "20250622-084334",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084334.jpg"
+    },
+    {
+        "timestamp": "20250622-084334",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084334.jpg"
+    },
+    {
+        "timestamp": "20250622-084505",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084505.jpg"
+    },
+    {
+        "timestamp": "20250622-084507",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084507.jpg"
+    },
+    {
+        "timestamp": "20250622-084515",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084515.jpg"
+    },
+    {
+        "timestamp": "20250622-084535",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084535.jpg"
+    },
+    {
+        "timestamp": "20250622-084536",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084536.jpg"
+    },
+    {
+        "timestamp": "20250622-084536",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084536.jpg"
+    },
+    {
+        "timestamp": "20250622-084536",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084536.jpg"
+    },
+    {
+        "timestamp": "20250622-084537",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084537.jpg"
+    },
+    {
+        "timestamp": "20250622-084551",
+        "objects": [
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084551.jpg"
+    },
+    {
+        "timestamp": "20250622-084552",
+        "objects": [
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084552.jpg"
+    },
+    {
+        "timestamp": "20250622-084552",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084552.jpg"
+    },
+    {
+        "timestamp": "20250622-084553",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084553.jpg"
+    },
+    {
+        "timestamp": "20250622-084553",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084553.jpg"
+    },
+    {
+        "timestamp": "20250622-084553",
+        "objects": [
+            "bed",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084553.jpg"
+    },
+    {
+        "timestamp": "20250622-084553",
+        "objects": [
+            "person",
+            "bed",
+            "person",
+            "chair",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084553.jpg"
+    },
+    {
+        "timestamp": "20250622-084553",
+        "objects": [
+            "chair",
+            "bed",
+            "person",
+            "chair",
+            "person",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084553.jpg"
+    },
+    {
+        "timestamp": "20250622-084553",
+        "objects": [
+            "bed",
+            "chair",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084553.jpg"
+    },
+    {
+        "timestamp": "20250622-084553",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084553.jpg"
+    },
+    {
+        "timestamp": "20250622-084554",
+        "objects": [
+            "bed",
+            "chair",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084554.jpg"
+    },
+    {
+        "timestamp": "20250622-084554",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084554.jpg"
+    },
+    {
+        "timestamp": "20250622-084554",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084554.jpg"
+    },
+    {
+        "timestamp": "20250622-084554",
+        "objects": [
+            "bed",
+            "chair",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084554.jpg"
+    },
+    {
+        "timestamp": "20250622-084554",
+        "objects": [
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084554.jpg"
+    },
+    {
+        "timestamp": "20250622-084554",
+        "objects": [
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084554.jpg"
+    },
+    {
+        "timestamp": "20250622-084554",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084554.jpg"
+    },
+    {
+        "timestamp": "20250622-084555",
+        "objects": [
+            "bed",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084555.jpg"
+    },
+    {
+        "timestamp": "20250622-084555",
+        "objects": [
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084555.jpg"
+    },
+    {
+        "timestamp": "20250622-084555",
+        "objects": [
+            "bed",
+            "person",
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084555.jpg"
+    },
+    {
+        "timestamp": "20250622-084555",
+        "objects": [
+            "bed",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084555.jpg"
+    },
+    {
+        "timestamp": "20250622-084555",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084555.jpg"
+    },
+    {
+        "timestamp": "20250622-084555",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084555.jpg"
+    },
+    {
+        "timestamp": "20250622-084555",
+        "objects": [
+            "bed",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084555.jpg"
+    },
+    {
+        "timestamp": "20250622-084555",
+        "objects": [
+            "bed",
+            "person",
+            "person",
+            "chair",
+            "person",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084555.jpg"
+    },
+    {
+        "timestamp": "20250622-084556",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "person",
+            "chair",
+            "person",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084556.jpg"
+    },
+    {
+        "timestamp": "20250622-084556",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "chair",
+            "person",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084556.jpg"
+    },
+    {
+        "timestamp": "20250622-084556",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084556.jpg"
+    },
+    {
+        "timestamp": "20250622-084556",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "person",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084556.jpg"
+    },
+    {
+        "timestamp": "20250622-084556",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084556.jpg"
+    },
+    {
+        "timestamp": "20250622-084556",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084556.jpg"
+    },
+    {
+        "timestamp": "20250622-084556",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084556.jpg"
+    },
+    {
+        "timestamp": "20250622-084557",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084557.jpg"
+    },
+    {
+        "timestamp": "20250622-084557",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084557.jpg"
+    },
+    {
+        "timestamp": "20250622-084557",
+        "objects": [
+            "chair",
+            "person",
+            "bed",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084557.jpg"
+    },
+    {
+        "timestamp": "20250622-084557",
+        "objects": [
+            "person",
+            "bed",
+            "person",
+            "chair",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084557.jpg"
+    },
+    {
+        "timestamp": "20250622-084557",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "bed",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084557.jpg"
+    },
+    {
+        "timestamp": "20250622-084557",
+        "objects": [
+            "chair",
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "person",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084557.jpg"
+    },
+    {
+        "timestamp": "20250622-084557",
+        "objects": [
+            "chair",
+            "person",
+            "chair",
+            "bed",
+            "person",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084557.jpg"
+    },
+    {
+        "timestamp": "20250622-084558",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084558.jpg"
+    },
+    {
+        "timestamp": "20250622-084558",
+        "objects": [
+            "chair",
+            "person",
+            "chair",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084558.jpg"
+    },
+    {
+        "timestamp": "20250622-084558",
+        "objects": [
+            "chair",
+            "person",
+            "chair",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084558.jpg"
+    },
+    {
+        "timestamp": "20250622-084558",
+        "objects": [
+            "chair",
+            "bed",
+            "person",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084558.jpg"
+    },
+    {
+        "timestamp": "20250622-084558",
+        "objects": [
+            "person",
+            "chair",
+            "chair",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084558.jpg"
+    },
+    {
+        "timestamp": "20250622-084558",
+        "objects": [
+            "chair",
+            "person",
+            "chair",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084558.jpg"
+    },
+    {
+        "timestamp": "20250622-084558",
+        "objects": [
+            "chair",
+            "bed",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084558.jpg"
+    },
+    {
+        "timestamp": "20250622-084559",
+        "objects": [
+            "chair",
+            "bed",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084559.jpg"
+    },
+    {
+        "timestamp": "20250622-084559",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084559.jpg"
+    },
+    {
+        "timestamp": "20250622-084559",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084559.jpg"
+    },
+    {
+        "timestamp": "20250622-084559",
+        "objects": [
+            "chair",
+            "bed",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084559.jpg"
+    },
+    {
+        "timestamp": "20250622-084559",
+        "objects": [
+            "chair",
+            "person",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084559.jpg"
+    },
+    {
+        "timestamp": "20250622-084600",
+        "objects": [
+            "chair",
+            "bed",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084600.jpg"
+    },
+    {
+        "timestamp": "20250622-084604",
+        "objects": [
+            "bed",
+            "chair",
+            "bed",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084604.jpg"
+    },
+    {
+        "timestamp": "20250622-084605",
+        "objects": [
+            "bed",
+            "chair",
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084605.jpg"
+    },
+    {
+        "timestamp": "20250622-084605",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084605.jpg"
+    },
+    {
+        "timestamp": "20250622-084605",
+        "objects": [
+            "bed",
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084605.jpg"
+    },
+    {
+        "timestamp": "20250622-084607",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084607.jpg"
+    },
+    {
+        "timestamp": "20250622-084607",
+        "objects": [
+            "bed",
+            "person",
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084607.jpg"
+    },
+    {
+        "timestamp": "20250622-084607",
+        "objects": [
+            "bed",
+            "person",
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084607.jpg"
+    },
+    {
+        "timestamp": "20250622-084607",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084607.jpg"
+    },
+    {
+        "timestamp": "20250622-084608",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084608.jpg"
+    },
+    {
+        "timestamp": "20250622-084608",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084608.jpg"
+    },
+    {
+        "timestamp": "20250622-084608",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084608.jpg"
+    },
+    {
+        "timestamp": "20250622-084608",
+        "objects": [
+            "bed",
+            "chair",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084608.jpg"
+    },
+    {
+        "timestamp": "20250622-084609",
+        "objects": [
+            "chair",
+            "bed",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084609.jpg"
+    },
+    {
+        "timestamp": "20250622-084609",
+        "objects": [
+            "chair",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084609.jpg"
+    },
+    {
+        "timestamp": "20250622-084609",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084609.jpg"
+    },
+    {
+        "timestamp": "20250622-084609",
+        "objects": [
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084609.jpg"
+    },
+    {
+        "timestamp": "20250622-084609",
+        "objects": [
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084609.jpg"
+    },
+    {
+        "timestamp": "20250622-084609",
+        "objects": [
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084609.jpg"
+    },
+    {
+        "timestamp": "20250622-084609",
+        "objects": [
+            "person",
+            "chair",
+            "chair",
+            "toilet"
+        ],
+        "snapshot": "/snapshots/20250622-084609.jpg"
+    },
+    {
+        "timestamp": "20250622-084610",
+        "objects": [
+            "person",
+            "chair",
+            "chair",
+            "toilet"
+        ],
+        "snapshot": "/snapshots/20250622-084610.jpg"
+    },
+    {
+        "timestamp": "20250622-084610",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084610.jpg"
+    },
+    {
+        "timestamp": "20250622-084610",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084610.jpg"
+    },
+    {
+        "timestamp": "20250622-084610",
+        "objects": [
+            "chair",
+            "person",
+            "remote"
+        ],
+        "snapshot": "/snapshots/20250622-084610.jpg"
+    },
+    {
+        "timestamp": "20250622-084610",
+        "objects": [
+            "person",
+            "chair",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084610.jpg"
+    },
+    {
+        "timestamp": "20250622-084610",
+        "objects": [
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084610.jpg"
+    },
+    {
+        "timestamp": "20250622-084610",
+        "objects": [
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084610.jpg"
+    },
+    {
+        "timestamp": "20250622-084611",
+        "objects": [
+            "chair",
+            "person",
+            "chair",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084611.jpg"
+    },
+    {
+        "timestamp": "20250622-084611",
+        "objects": [
+            "person",
+            "chair",
+            "chair",
+            "chair",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084611.jpg"
+    },
+    {
+        "timestamp": "20250622-084611",
+        "objects": [
+            "chair",
+            "chair",
+            "person",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084611.jpg"
+    },
+    {
+        "timestamp": "20250622-084613",
+        "objects": [
+            "chair",
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084613.jpg"
+    },
+    {
+        "timestamp": "20250622-084613",
+        "objects": [
+            "chair",
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084613.jpg"
+    },
+    {
+        "timestamp": "20250622-084616",
+        "objects": [
+            "person",
+            "suitcase",
+            "chair",
+            "bed",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084616.jpg"
+    },
+    {
+        "timestamp": "20250622-084616",
+        "objects": [
+            "chair",
+            "person",
+            "bed",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084616.jpg"
+    },
+    {
+        "timestamp": "20250622-084616",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "suitcase",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084616.jpg"
+    },
+    {
+        "timestamp": "20250622-084616",
+        "objects": [
+            "chair",
+            "bed",
+            "person",
+            "suitcase",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084616.jpg"
+    },
+    {
+        "timestamp": "20250622-084616",
+        "objects": [
+            "chair",
+            "bed",
+            "suitcase",
+            "person",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084616.jpg"
+    },
+    {
+        "timestamp": "20250622-084617",
+        "objects": [
+            "chair",
+            "bed",
+            "person",
+            "suitcase",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084617.jpg"
+    },
+    {
+        "timestamp": "20250622-084617",
+        "objects": [
+            "chair",
+            "suitcase",
+            "bed",
+            "suitcase",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084617.jpg"
+    },
+    {
+        "timestamp": "20250622-084617",
+        "objects": [
+            "chair",
+            "bed",
+            "chair",
+            "suitcase",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084617.jpg"
+    },
+    {
+        "timestamp": "20250622-084617",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084617.jpg"
+    },
+    {
+        "timestamp": "20250622-084617",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084617.jpg"
+    },
+    {
+        "timestamp": "20250622-084618",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084618.jpg"
+    },
+    {
+        "timestamp": "20250622-084618",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "person",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084618.jpg"
+    },
+    {
+        "timestamp": "20250622-084618",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084618.jpg"
+    },
+    {
+        "timestamp": "20250622-084618",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084618.jpg"
+    },
+    {
+        "timestamp": "20250622-084618",
+        "objects": [
+            "chair",
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084618.jpg"
+    },
+    {
+        "timestamp": "20250622-084618",
+        "objects": [
+            "chair",
+            "bed",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084618.jpg"
+    },
+    {
+        "timestamp": "20250622-084619",
+        "objects": [
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084619.jpg"
+    },
+    {
+        "timestamp": "20250622-084619",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084619.jpg"
+    },
+    {
+        "timestamp": "20250622-084619",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084619.jpg"
+    },
+    {
+        "timestamp": "20250622-084619",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084619.jpg"
+    },
+    {
+        "timestamp": "20250622-084619",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084619.jpg"
+    },
+    {
+        "timestamp": "20250622-084620",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084620.jpg"
+    },
+    {
+        "timestamp": "20250622-084620",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "person",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084620.jpg"
+    },
+    {
+        "timestamp": "20250622-084620",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084620.jpg"
+    },
+    {
+        "timestamp": "20250622-084620",
+        "objects": [
+            "bed",
+            "person",
+            "person",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084620.jpg"
+    },
+    {
+        "timestamp": "20250622-084621",
+        "objects": [
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "person",
+            "suitcase",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084621.jpg"
+    },
+    {
+        "timestamp": "20250622-084621",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "person",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084621.jpg"
+    },
+    {
+        "timestamp": "20250622-084621",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084621.jpg"
+    },
+    {
+        "timestamp": "20250622-084621",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084621.jpg"
+    },
+    {
+        "timestamp": "20250622-084621",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084621.jpg"
+    },
+    {
+        "timestamp": "20250622-084622",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "suitcase",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084622.jpg"
+    },
+    {
+        "timestamp": "20250622-084622",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "suitcase",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084622.jpg"
+    },
+    {
+        "timestamp": "20250622-084622",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084622.jpg"
+    },
+    {
+        "timestamp": "20250622-084622",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084622.jpg"
+    },
+    {
+        "timestamp": "20250622-084622",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084622.jpg"
+    },
+    {
+        "timestamp": "20250622-084622",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084622.jpg"
+    },
+    {
+        "timestamp": "20250622-084623",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084623.jpg"
+    },
+    {
+        "timestamp": "20250622-084623",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084623.jpg"
+    },
+    {
+        "timestamp": "20250622-084623",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "suitcase",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084623.jpg"
+    },
+    {
+        "timestamp": "20250622-084623",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084623.jpg"
+    },
+    {
+        "timestamp": "20250622-084623",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084623.jpg"
+    },
+    {
+        "timestamp": "20250622-084623",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084623.jpg"
+    },
+    {
+        "timestamp": "20250622-084623",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084623.jpg"
+    },
+    {
+        "timestamp": "20250622-084623",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084623.jpg"
+    },
+    {
+        "timestamp": "20250622-084624",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084624.jpg"
+    },
+    {
+        "timestamp": "20250622-084624",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084624.jpg"
+    },
+    {
+        "timestamp": "20250622-084624",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084624.jpg"
+    },
+    {
+        "timestamp": "20250622-084624",
+        "objects": [
+            "bed",
+            "person",
+            "chair",
+            "person",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084624.jpg"
+    },
+    {
+        "timestamp": "20250622-084624",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084624.jpg"
+    },
+    {
+        "timestamp": "20250622-084624",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084624.jpg"
+    },
+    {
+        "timestamp": "20250622-084624",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "person",
+            "suitcase",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084624.jpg"
+    },
+    {
+        "timestamp": "20250622-084624",
+        "objects": [
+            "person",
+            "chair",
+            "person",
+            "bed",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084624.jpg"
+    },
+    {
+        "timestamp": "20250622-084625",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "person",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084625.jpg"
+    },
+    {
+        "timestamp": "20250622-084625",
+        "objects": [
+            "person",
+            "chair",
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084625.jpg"
+    },
+    {
+        "timestamp": "20250622-084625",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "bed",
+            "suitcase",
+            "chair",
+            "laptop"
+        ],
+        "snapshot": "/snapshots/20250622-084625.jpg"
+    },
+    {
+        "timestamp": "20250622-084625",
+        "objects": [
+            "person",
+            "chair",
+            "person",
+            "bed",
+            "chair",
+            "remote",
+            "suitcase",
+            "remote"
+        ],
+        "snapshot": "/snapshots/20250622-084625.jpg"
+    },
+    {
+        "timestamp": "20250622-084625",
+        "objects": [
+            "person",
+            "chair",
+            "person",
+            "bed",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084625.jpg"
+    },
+    {
+        "timestamp": "20250622-084625",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "bed",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084625.jpg"
+    },
+    {
+        "timestamp": "20250622-084626",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "bed",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084626.jpg"
+    },
+    {
+        "timestamp": "20250622-084626",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084626.jpg"
+    },
+    {
+        "timestamp": "20250622-084626",
+        "objects": [
+            "person",
+            "chair",
+            "person",
+            "bed",
+            "suitcase",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084626.jpg"
+    },
+    {
+        "timestamp": "20250622-084626",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "bed",
+            "suitcase",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084626.jpg"
+    },
+    {
+        "timestamp": "20250622-084626",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "bed",
+            "suitcase",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084626.jpg"
+    },
+    {
+        "timestamp": "20250622-084626",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "suitcase",
+            "bed",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084626.jpg"
+    },
+    {
+        "timestamp": "20250622-084626",
+        "objects": [
+            "person",
+            "person",
+            "suitcase",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084626.jpg"
+    },
+    {
+        "timestamp": "20250622-084626",
+        "objects": [
+            "person",
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084626.jpg"
+    },
+    {
+        "timestamp": "20250622-084627",
+        "objects": [
+            "person",
+            "person",
+            "suitcase",
+            "chair",
+            "bed",
+            "chair",
+            "suitcase",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084627.jpg"
+    },
+    {
+        "timestamp": "20250622-084627",
+        "objects": [
+            "person",
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084627.jpg"
+    },
+    {
+        "timestamp": "20250622-084627",
+        "objects": [
+            "person",
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084627.jpg"
+    },
+    {
+        "timestamp": "20250622-084627",
+        "objects": [
+            "person",
+            "person",
+            "bed",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084627.jpg"
+    },
+    {
+        "timestamp": "20250622-084627",
+        "objects": [
+            "person",
+            "bed",
+            "chair",
+            "person",
+            "person",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084627.jpg"
+    },
+    {
+        "timestamp": "20250622-084628",
+        "objects": [
+            "person",
+            "person",
+            "bed",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084628.jpg"
+    },
+    {
+        "timestamp": "20250622-084628",
+        "objects": [
+            "person",
+            "bed",
+            "person",
+            "chair",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084628.jpg"
+    },
+    {
+        "timestamp": "20250622-084628",
+        "objects": [
+            "person",
+            "bed",
+            "person",
+            "suitcase",
+            "chair",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084628.jpg"
+    },
+    {
+        "timestamp": "20250622-084628",
+        "objects": [
+            "person",
+            "bed",
+            "person",
+            "suitcase",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084628.jpg"
+    },
+    {
+        "timestamp": "20250622-084629",
+        "objects": [
+            "person",
+            "bed",
+            "person",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084629.jpg"
+    },
+    {
+        "timestamp": "20250622-084629",
+        "objects": [
+            "person",
+            "bed",
+            "suitcase",
+            "person",
+            "chair",
+            "chair",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084629.jpg"
+    },
+    {
+        "timestamp": "20250622-084629",
+        "objects": [
+            "person",
+            "bed",
+            "person",
+            "chair",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084629.jpg"
+    },
+    {
+        "timestamp": "20250622-084629",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "chair",
+            "bed",
+            "suitcase"
+        ],
+        "snapshot": "/snapshots/20250622-084629.jpg"
+    },
+    {
+        "timestamp": "20250622-084630",
+        "objects": [
+            "person",
+            "person",
+            "suitcase",
+            "chair",
+            "chair",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084630.jpg"
+    },
+    {
+        "timestamp": "20250622-084630",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "chair",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084630.jpg"
+    },
+    {
+        "timestamp": "20250622-084630",
+        "objects": [
+            "person",
+            "person",
+            "bed",
+            "chair",
+            "suitcase",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084630.jpg"
+    },
+    {
+        "timestamp": "20250622-084630",
+        "objects": [
+            "person",
+            "chair",
+            "chair",
+            "chair",
+            "suitcase",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084630.jpg"
+    },
+    {
+        "timestamp": "20250622-084630",
+        "objects": [
+            "person",
+            "person",
+            "suitcase",
+            "chair",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084630.jpg"
+    },
+    {
+        "timestamp": "20250622-084630",
+        "objects": [
+            "person",
+            "person",
+            "suitcase",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084630.jpg"
+    },
+    {
+        "timestamp": "20250622-084630",
+        "objects": [
+            "person",
+            "suitcase",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084630.jpg"
+    },
+    {
+        "timestamp": "20250622-084631",
+        "objects": [
+            "person",
+            "chair",
+            "person",
+            "suitcase",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084631.jpg"
+    },
+    {
+        "timestamp": "20250622-084631",
+        "objects": [
+            "chair",
+            "suitcase",
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084631.jpg"
+    },
+    {
+        "timestamp": "20250622-084631",
+        "objects": [
+            "person",
+            "chair",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084631.jpg"
+    },
+    {
+        "timestamp": "20250622-084632",
+        "objects": [
+            "person",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084632.jpg"
+    },
+    {
+        "timestamp": "20250622-084632",
+        "objects": [
+            "person",
+            "person",
+            "remote",
+            "chair",
+            "couch"
+        ],
+        "snapshot": "/snapshots/20250622-084632.jpg"
+    },
+    {
+        "timestamp": "20250622-084633",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "person"
+        ],
+        "snapshot": "/snapshots/20250622-084633.jpg"
+    },
+    {
+        "timestamp": "20250622-084633",
+        "objects": [
+            "person",
+            "person",
+            "chair",
+            "bed"
+        ],
+        "snapshot": "/snapshots/20250622-084633.jpg"
+    },
+    {
+        "timestamp": "20250622-084634",
+        "objects": [
+            "person",
+            "bed",
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-084634.jpg"
+    },
+    {
+        "timestamp": "20250622-085258",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-085258.jpg"
+    },
+    {
+        "timestamp": "20250622-085258",
+        "objects": [
+            "person",
+            "chair"
+        ],
+        "snapshot": "/snapshots/20250622-085258.jpg"
+    }
+]
