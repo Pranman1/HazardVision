@@ -2,7 +2,7 @@ import cv2
 import os
 import torch
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timedelta
 from ultralytics import YOLO
 from utils import save_snapshot, log_hazard
 import glob
@@ -102,6 +102,28 @@ HAZARD_COMBINATIONS = [
     {"person", "person", "ladder"},
     {"person", "person", "scaffold"},
 ]
+
+# Add cooldown tracking
+HAZARD_COOLDOWN = 5  # seconds
+last_hazard_detection = {}  # Store timestamp of last detection for each hazard type
+
+def is_hazard_in_cooldown(hazard_type):
+    """Check if a hazard type is still in cooldown period"""
+    global last_hazard_detection
+    
+    current_time = datetime.now()
+    last_time = last_hazard_detection.get(hazard_type)
+    
+    if last_time is None:
+        return False
+        
+    time_diff = current_time - last_time
+    return time_diff.total_seconds() < HAZARD_COOLDOWN
+
+def update_hazard_timestamp(hazard_type):
+    """Update the last detection timestamp for a hazard type"""
+    global last_hazard_detection
+    last_hazard_detection[hazard_type] = datetime.now()
 
 def calculate_box_overlap(box1, box2):
     """
@@ -239,24 +261,28 @@ def classify_hazard(labels, boxes):
         for category, rules in HAZARD_CATEGORIES.items():
             if rules.get("always_hazard", False):
                 if any(obj in label_set for obj in rules["objects"]):
-                    hazard_types.append(category)
-                    severity = rules.get("severity", "high")
-                    is_hazardous = True
+                    if not is_hazard_in_cooldown(category):
+                        hazard_types.append(category)
+                        severity = rules.get("severity", "high")
+                        is_hazardous = True
+                        update_hazard_timestamp(category)
         
         # Analyze spatial relationships for context-sensitive hazards
         spatial_hazards = analyze_spatial_relationships(boxes)
         
         # Process spatial hazards
         for hazard in spatial_hazards:
-            if hazard["type"] not in hazard_types:
-                hazard_types.append(hazard["type"])
-            if hazard["severity"] == "critical":
-                severity = "critical"
-            elif hazard["severity"] == "high" and severity not in ["critical"]:
-                severity = "high"
-            elif hazard["severity"] == "medium" and severity not in ["critical", "high"]:
-                severity = "medium"
-            is_hazardous = True
+            if not is_hazard_in_cooldown(hazard["type"]):
+                if hazard["type"] not in hazard_types:
+                    hazard_types.append(hazard["type"])
+                    update_hazard_timestamp(hazard["type"])
+                if hazard["severity"] == "critical":
+                    severity = "critical"
+                elif hazard["severity"] == "high" and severity not in ["critical"]:
+                    severity = "high"
+                elif hazard["severity"] == "medium" and severity not in ["critical", "high"]:
+                    severity = "medium"
+                is_hazardous = True
         
         # Simplified handling for sharp objects (especially knives)
         for box in boxes:
@@ -271,20 +297,26 @@ def classify_hazard(labels, boxes):
                             break
                 
                 if not has_proper_handling:
-                    # Only flag as hazard if unattended
-                    hazard_types.append("unattended_sharp_object")
-                    severity = "critical"
-                    is_hazardous = True
+                    hazard_type = "unattended_sharp_object"
+                    if not is_hazard_in_cooldown(hazard_type):
+                        # Only flag as hazard if unattended and not in cooldown
+                        hazard_types.append(hazard_type)
+                        severity = "critical"
+                        is_hazardous = True
+                        update_hazard_timestamp(hazard_type)
         
         # Check for obstacles and trip hazards
         for box in boxes:
             if (box["label"] in HAZARD_CATEGORIES["obstacles"]["objects"] or
                 box["label"] in HAZARD_CATEGORIES["trip_hazards"]["objects"]):
-                # Any obstacle or trip hazard is considered high severity
-                hazard_types.append("workplace_obstacle")
-                if severity not in ["critical"]:
-                    severity = "high"
-                is_hazardous = True
+                hazard_type = "workplace_obstacle"
+                if not is_hazard_in_cooldown(hazard_type):
+                    # Any obstacle or trip hazard is considered high severity
+                    hazard_types.append(hazard_type)
+                    if severity not in ["critical"]:
+                        severity = "high"
+                    is_hazardous = True
+                    update_hazard_timestamp(hazard_type)
                 
     except Exception as e:
         print(f"Error in hazard classification: {str(e)}")
