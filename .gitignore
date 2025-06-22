@@ -10,3 +10,5 @@ __pycache__/
 *.sqlite3
 
 snapshots/
+frontend/static/alerts/
+backend/frontend/static/alerts/
