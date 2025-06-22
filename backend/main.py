@@ -13,6 +13,8 @@ import torch
 from detect import HAZARD_CATEGORIES, classify_hazard
 from ultralytics import YOLO
 import logging
+from hazard_analysis import process_critical_hazard
+import os
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -51,52 +53,38 @@ frame_queue = Queue(maxsize=2)  # Only keep latest frame
 result_lock = Lock()
 latest_result = None
 
+# Model configuration
+conf_threshold = 0.3  # Confidence threshold for detections
+
 def process_frame(frame):
     """Process a single frame with the model"""
     try:
-        # Resize frame for faster processing while maintaining aspect ratio
-        max_size = 640
-        height, width = frame.shape[:2]
-        scale = min(max_size/width, max_size/height)
-        if scale < 1:
-            new_width = int(width * scale)
-            new_height = int(height * scale)
-            frame_resized = cv2.resize(frame, (new_width, new_height))
-        else:
-            frame_resized = frame
-
-        # Run detection on GPU with mixed precision
-        with torch.cuda.amp.autocast():
-            results = model(frame_resized)
-
+        # Convert frame to RGB for YOLO
+        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        
+        # Run detection
+        results = model(frame_rgb, conf=conf_threshold)
+        
         labels = []
         boxes = []
         
         # Process results
         for result in results:
             for box in result.boxes:
-                label = result.names[int(box.cls)]
                 conf = float(box.conf)
+                label = result.names[int(box.cls)]
                 
-                # Scale coordinates back to original size if resized
-                if scale < 1:
+                if conf >= conf_threshold:
                     x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
-                    x1 = int(x1 / scale)
-                    x2 = int(x2 / scale)
-                    y1 = int(y1 / scale)
-                    y2 = int(y2 / scale)
-                else:
-                    x1, y1, x2, y2 = map(int, box.xyxy[0].cpu().numpy())
-
-                labels.append(label)
-                boxes.append({
-                    "label": label,
-                    "confidence": float(conf),
-                    "box": [x1, y1, x2, y2]
-                })
-
-                # Draw box and label
-                color = (0, 255, 0)  # Default green
+                    boxes.append({
+                        "box": [int(x1), int(y1), int(x2), int(y2)],
+                        "label": label,
+                        "confidence": conf
+                    })
+                    labels.append(label)
+                
+                # Default green
+                color = (0, 255, 0)
                 for category, rules in HAZARD_CATEGORIES.items():
                     if label in rules["objects"]:
                         if "fall" in category or "sharp" in category or "fire" in category:
@@ -107,13 +95,24 @@ def process_frame(frame):
                             color = (255, 255, 0)  # Yellow for electrical
                         break
 
-                cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
+                cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), color, 2)
                 label_text = f"{label} {conf:.2f}"
-                cv2.putText(frame, label_text, (x1, y1-10),
+                cv2.putText(frame, label_text, (int(x1), int(y1)-10),
                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
         # Classify hazard
         is_hazardous, hazard_types, severity = classify_hazard(labels, boxes)
+        
+        # Process critical hazards with LLM and speech synthesis
+        hazard_analysis = None
+        if is_hazardous and severity == "critical":
+            # Save frame for analysis
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            frame_path = f"snapshots/hazard_{timestamp}.jpg"
+            cv2.imwrite(frame_path, frame)
+            
+            # Get hazard analysis
+            hazard_analysis = process_critical_hazard(frame_path, hazard_types, severity)
         
         # Convert frame to base64 for sending
         _, buffer = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 85])
@@ -126,7 +125,8 @@ def process_frame(frame):
             "boxes": boxes,
             "is_hazardous": is_hazardous,
             "hazard_types": hazard_types,
-            "severity": severity
+            "severity": severity,
+            "hazard_analysis": hazard_analysis
         }
 
     except Exception as e:
@@ -177,8 +177,14 @@ async def websocket_endpoint(websocket: WebSocket):
                 if frame is not None:
                     # Update frame queue
                     if frame_queue.full():
-                        frame_queue.get()  # Remove old frame if queue is full
-                    frame_queue.put(frame)
+                        try:
+                            frame_queue.get_nowait()  # Remove old frame if queue is full
+                        except:
+                            pass
+                    try:
+                        frame_queue.put_nowait(frame)
+                    except:
+                        pass
                     
                     # Get latest result
                     with result_lock:
@@ -190,6 +196,9 @@ async def websocket_endpoint(websocket: WebSocket):
             except WebSocketDisconnect:
                 logger.info("Client disconnected normally")
                 break
+            except asyncio.CancelledError:
+                logger.info("WebSocket connection cancelled")
+                break
             except Exception as e:
                 logger.error(f"Error in WebSocket loop: {str(e)}")
                 continue
@@ -197,7 +206,17 @@ async def websocket_endpoint(websocket: WebSocket):
     except Exception as e:
         logger.error(f"WebSocket error: {str(e)}")
     finally:
+        # Clean up resources
         logger.info("WebSocket connection closed")
+        try:
+            # Clear frame queue
+            while not frame_queue.empty():
+                try:
+                    frame_queue.get_nowait()
+                except:
+                    pass
+        except:
+            pass
 
 # Keep the old snapshot endpoint for backup
 @app.post("/snapshot/")

@@ -20,6 +20,9 @@ let audioContext = null;
 let lastAudioTime = 0;
 const AUDIO_COOLDOWN = 3000; // 3 seconds between alerts
 
+// Audio handling
+let currentAudio = null;
+
 function createAudioContext() {
     if (!audioContext) {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -65,6 +68,22 @@ function playHazardAlert(severity) {
     }
 }
 
+function playHazardAudio(audioPath) {
+    try {
+        // Stop any currently playing audio
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio = null;
+        }
+        
+        // Create and play new audio
+        currentAudio = new Audio(audioPath);
+        currentAudio.play();
+    } catch (error) {
+        console.error('Error playing audio:', error);
+    }
+}
+
 // Helper function to create image elements with proper loading states
 function createImage(src, width = null) {
     const img = document.createElement("img");
@@ -92,21 +111,41 @@ function createImage(src, width = null) {
 }
 
 // Start camera
-navigator.mediaDevices.getUserMedia({ 
-    video: { 
-        width: { ideal: 640 },
-        height: { ideal: 480 },
-        frameRate: { ideal: 30 }
-    } 
-})
-.then(stream => {
-    video.srcObject = stream;
-    video.addEventListener('loadedmetadata', () => {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-    });
-})
-.catch(err => console.error("Camera error:", err));
+async function initCamera() {
+    try {
+        // First enumerate devices
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(device => device.kind === 'videoinput');
+        
+        // Try to find DroidCam
+        const droidcam = videoDevices.find(device => device.label.toLowerCase().includes('droidcam'));
+        
+        // Get video stream
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: {
+                width: { ideal: 640 },
+                height: { ideal: 480 },
+                frameRate: { ideal: 30 },
+                deviceId: droidcam ? droidcam.deviceId : undefined
+            }
+        });
+        
+        video.srcObject = stream;
+        video.addEventListener('loadedmetadata', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+        });
+        
+        console.log('Camera initialized successfully');
+        console.log('Available video devices:', videoDevices.map(d => d.label));
+        
+    } catch (err) {
+        console.error("Camera error:", err);
+    }
+}
+
+// Initialize camera
+initCamera();
 
 function connectWebSocket() {
     if (ws) {
@@ -146,7 +185,15 @@ function connectWebSocket() {
         
         // Play alert if hazardous
         if (data.is_hazardous) {
-            playHazardAlert(data.severity);
+            if (data.severity === 'critical') {
+                // Play beep alert
+                playHazardAlert(data.severity);
+                
+                // If we have a hazard analysis with audio, play it
+                if (data.hazard_analysis && data.hazard_analysis.audio_path) {
+                    playHazardAudio(data.hazard_analysis.audio_path);
+                }
+            }
             
             // Add to log
             const table = document.getElementById('logTable');
@@ -156,7 +203,14 @@ function connectWebSocket() {
             const row = tbody.insertRow(0);
             row.insertCell().innerText = data.timestamp;
             row.insertCell().innerText = data.labels.join(", ");
-            row.insertCell().innerText = data.hazard_types.join(", ");
+            
+            // Add analysis if available
+            const hazardCell = row.insertCell();
+            if (data.hazard_analysis && data.hazard_analysis.analysis) {
+                hazardCell.innerText = data.hazard_analysis.analysis;
+            } else {
+                hazardCell.innerText = data.hazard_types.join(", ");
+            }
             
             const severityCell = row.insertCell();
             severityCell.innerHTML = `<span class="severity-${data.severity}">${data.severity.toUpperCase()}</span>`;

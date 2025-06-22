@@ -7,6 +7,12 @@ from ultralytics import YOLO
 from utils import save_snapshot, log_hazard
 import glob
 from pathlib import Path
+import requests
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Check for CUDA availability and set device
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -104,8 +110,9 @@ HAZARD_COMBINATIONS = [
 ]
 
 # Add cooldown tracking
-HAZARD_COOLDOWN = 5  # seconds
+HAZARD_COOLDOWN = 9  # seconds (3x the base cooldown of 3 seconds)
 last_hazard_detection = {}  # Store timestamp of last detection for each hazard type
+critical_alert_count = 0  # Track number of critical alerts
 
 def is_hazard_in_cooldown(hazard_type):
     """Check if a hazard type is still in cooldown period"""
@@ -122,8 +129,18 @@ def is_hazard_in_cooldown(hazard_type):
 
 def update_hazard_timestamp(hazard_type):
     """Update the last detection timestamp for a hazard type"""
-    global last_hazard_detection
+    global last_hazard_detection, critical_alert_count
+    
     last_hazard_detection[hazard_type] = datetime.now()
+    
+    # Increment critical alert count if severity is critical
+    if hazard_type in HAZARD_CATEGORIES and HAZARD_CATEGORIES[hazard_type].get("severity") == "critical":
+        critical_alert_count += 1
+        
+        # Check if we've reached the threshold
+        if critical_alert_count >= 5:
+            trigger_webhook()
+            critical_alert_count = 0  # Reset counter after triggering
 
 def calculate_box_overlap(box1, box2):
     """
@@ -248,81 +265,95 @@ def objects_are_close(box1, box2, threshold=100):
 
 def classify_hazard(labels, boxes):
     """
-    Enhanced hazard classification based on OSHA guidelines and spatial analysis.
-    Returns tuple of (is_hazardous, hazard_types, severity)
+    Classify hazards based on detected objects and their relationships.
+    Returns:
+    - is_hazardous (bool): Whether a hazard is present
+    - hazard_types (list): List of detected hazard types
+    - severity (str): Overall severity level (critical, high, medium, low)
     """
-    label_set = set(labels)
+    global critical_alert_count
     hazard_types = []
-    severity = "low"
-    is_hazardous = False
+    max_severity = "low"
+    severity_levels = {"critical": 4, "high": 3, "medium": 2, "low": 1}
+    has_person = "person" in labels
     
-    try:
-        # First check for inherently hazardous objects
-        for category, rules in HAZARD_CATEGORIES.items():
-            if rules.get("always_hazard", False):
-                if any(obj in label_set for obj in rules["objects"]):
+    # First check for immediate hazards that don't require human presence
+    for category, rules in HAZARD_CATEGORIES.items():
+        if rules.get("always_hazard", False):
+            for obj in rules["objects"]:
+                if obj in labels:
+                    # Check cooldown before adding hazard
                     if not is_hazard_in_cooldown(category):
                         hazard_types.append(category)
-                        severity = rules.get("severity", "high")
-                        is_hazardous = True
                         update_hazard_timestamp(category)
-        
-        # Analyze spatial relationships for context-sensitive hazards
-        spatial_hazards = analyze_spatial_relationships(boxes)
-        
-        # Process spatial hazards
-        for hazard in spatial_hazards:
-            if not is_hazard_in_cooldown(hazard["type"]):
-                if hazard["type"] not in hazard_types:
-                    hazard_types.append(hazard["type"])
-                    update_hazard_timestamp(hazard["type"])
-                if hazard["severity"] == "critical":
-                    severity = "critical"
-                elif hazard["severity"] == "high" and severity not in ["critical"]:
-                    severity = "high"
-                elif hazard["severity"] == "medium" and severity not in ["critical", "high"]:
-                    severity = "medium"
-                is_hazardous = True
-        
-        # Simplified handling for sharp objects (especially knives)
-        for box in boxes:
-            if box["label"] in HAZARD_CATEGORIES["sharp_objects"]["objects"]:
-                # Check if there's proper handling context
-                has_proper_handling = False
-                
-                for other_box in boxes:
-                    if other_box["label"] in ["hand", "person"]:
-                        if is_object_held_safely(other_box, box):
-                            has_proper_handling = True
-                            break
-                
-                if not has_proper_handling:
-                    hazard_type = "unattended_sharp_object"
-                    if not is_hazard_in_cooldown(hazard_type):
-                        # Only flag as hazard if unattended and not in cooldown
-                        hazard_types.append(hazard_type)
-                        severity = "critical"
-                        is_hazardous = True
-                        update_hazard_timestamp(hazard_type)
-        
-        # Check for obstacles and trip hazards
-        for box in boxes:
-            if (box["label"] in HAZARD_CATEGORIES["obstacles"]["objects"] or
-                box["label"] in HAZARD_CATEGORIES["trip_hazards"]["objects"]):
-                hazard_type = "workplace_obstacle"
-                if not is_hazard_in_cooldown(hazard_type):
-                    # Any obstacle or trip hazard is considered high severity
-                    hazard_types.append(hazard_type)
-                    if severity not in ["critical"]:
-                        severity = "high"
-                    is_hazardous = True
-                    update_hazard_timestamp(hazard_type)
-                
-    except Exception as e:
-        print(f"Error in hazard classification: {str(e)}")
-        return False, [], "low"
+                        if rules.get("severity") == "critical":
+                            critical_alert_count += 1
+                            logger.info(f"Critical alert count: {critical_alert_count}")
+                            if critical_alert_count >= 5:
+                                if trigger_webhook():
+                                    critical_alert_count = 0
+                        max_severity = max(max_severity, rules.get("severity", "low"), 
+                                        key=lambda x: severity_levels.get(x, 0))
     
-    return is_hazardous, hazard_types, severity
+    # Check for unattended sharp objects - these are CRITICAL
+    if not has_person:
+        for obj in HAZARD_CATEGORIES["sharp_objects"]["objects"]:
+            if obj in labels:
+                if not is_hazard_in_cooldown("unattended_sharp_objects"):
+                    hazard_types.append("unattended_sharp_object")
+                    update_hazard_timestamp("unattended_sharp_objects")
+                    max_severity = "critical"
+                    critical_alert_count += 1
+                    logger.info(f"Critical alert count (unattended sharp object): {critical_alert_count}")
+                    if critical_alert_count >= 5:
+                        if trigger_webhook():
+                            critical_alert_count = 0
+                    break  # Only need to trigger once for multiple sharp objects
+    
+    # Check for hazardous combinations
+    detected_objects = set(labels)
+    for combo in HAZARD_COMBINATIONS:
+        if combo.issubset(detected_objects):
+            hazard_category = None
+            # Determine hazard category based on combination
+            if "ladder" in combo or "scaffold" in combo:
+                hazard_category = "fall_hazards"
+            elif "knife" in combo or "scissors" in combo:
+                hazard_category = "sharp_objects"
+            elif "fire" in combo or "smoke" in combo:
+                hazard_category = "fire_hazards"
+            
+            if hazard_category and not is_hazard_in_cooldown(hazard_category):
+                hazard_types.append(hazard_category)
+                update_hazard_timestamp(hazard_category)
+                severity = HAZARD_CATEGORIES[hazard_category].get("severity", "low")
+                if severity == "critical":
+                    critical_alert_count += 1
+                    logger.info(f"Critical alert count: {critical_alert_count}")
+                    if critical_alert_count >= 5:
+                        if trigger_webhook():
+                            critical_alert_count = 0
+                max_severity = max(max_severity, severity,
+                                key=lambda x: severity_levels.get(x, 0))
+    
+    # Analyze spatial relationships
+    spatial_hazards = analyze_spatial_relationships(boxes)
+    for hazard in spatial_hazards:
+        hazard_type = hazard["type"]
+        if not is_hazard_in_cooldown(hazard_type):
+            hazard_types.append(hazard_type)
+            update_hazard_timestamp(hazard_type)
+            if hazard["severity"] == "critical":
+                critical_alert_count += 1
+                logger.info(f"Critical alert count: {critical_alert_count}")
+                if critical_alert_count >= 5:
+                    if trigger_webhook():
+                        critical_alert_count = 0
+            max_severity = max(max_severity, hazard["severity"],
+                            key=lambda x: severity_levels.get(x, 0))
+    
+    logger.info(f"Hazard classification: types={hazard_types}, severity={max_severity}, has_person={has_person}")
+    return bool(hazard_types), hazard_types, max_severity
 
 def cleanup_old_snapshots(snapshots_dir, max_files=50):
     """Keep only the most recent max_files in the snapshots directory"""
@@ -411,3 +442,33 @@ def detect_and_log(image_path, timestamp):
             "boxes": [],
             "labels": []
         }
+
+def trigger_webhook():
+    """Trigger webhook after threshold of critical alerts"""
+    try:
+        webhook_url = "https://haraghav.app.n8n.cloud/webhook-test/e4f0165a-70a2-47de-9dec-00eccd6ba7b6"
+        payload = {
+            "event": "critical_hazard_threshold",
+            "timestamp": datetime.now().isoformat(),
+            "alert_count": critical_alert_count,
+            "message": "Critical hazard threshold reached - immediate attention required"
+        }
+        logger.info(f"Attempting to trigger webhook with payload: {payload}")
+        response = requests.post(webhook_url, json=payload, timeout=5)  # 5 second timeout
+        
+        if response.status_code == 200:
+            logger.info("✓ Webhook triggered successfully")
+            return True
+        else:
+            logger.error(f"✗ Webhook trigger failed with status code: {response.status_code}")
+            logger.error(f"Response content: {response.text}")
+            return False
+    except requests.exceptions.Timeout:
+        logger.error("✗ Webhook trigger timed out after 5 seconds")
+        return False
+    except requests.exceptions.RequestException as e:
+        logger.error(f"✗ Error triggering webhook: {str(e)}")
+        return False
+    except Exception as e:
+        logger.error(f"✗ Unexpected error triggering webhook: {str(e)}")
+        return False
