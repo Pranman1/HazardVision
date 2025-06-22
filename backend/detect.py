@@ -21,35 +21,46 @@ conf_threshold = 0.3  # Lower confidence threshold for better knife detection
 HAZARD_CATEGORIES = {
     "fall_hazards": {
         "objects": {"ladder", "chair", "platform", "scaffold", "stairs"},
-        "min_height": 4  # feet - OSHA requires fall protection above 4 feet
+        "min_height": 4,  # feet - OSHA requires fall protection above 4 feet
+        "severity": "high"
     },
     "trip_hazards": {
         "objects": {"bottle", "cord", "box", "suitcase", "backpack", "bag", "wire", "cable"},
-        "ground_level": True  # Objects at ground level are trip hazards
+        "ground_level": True,  # Objects at ground level are trip hazards
+        "severity": "high"  # Increased severity for trip hazards
     },
     "sharp_objects": {
         "objects": {"knife", "scissors", "tool", "saw", "drill", "blade", "cutter"},
         "confidence_threshold": 0.3,  # Lower threshold specifically for sharp objects
         "safe_handling": {
-            "required_context": ["hand"],  # Objects that need proper handling context
-            "safe_distance": 50  # pixels - safe handling distance threshold
+            "required_context": ["hand", "person"],  # Objects that need proper handling context
+            "safe_distance": 50,  # pixels - safe handling distance threshold
+            "severity": {
+                "unattended": "critical",  # Highest severity when unattended
+                "improper_handling": "high",  # High severity when not properly handled
+                "proper_handling": "medium"  # Medium severity even when properly handled
+            }
         }
     },
     "fire_hazards": {
         "objects": {"fire", "smoke", "cigarette", "matches", "lighter"},
-        "always_hazard": True  # These are always considered hazardous
+        "always_hazard": True,  # These are always considered hazardous
+        "severity": "critical"
     },
     "electrical_hazards": {
         "objects": {"cord", "wire", "cable", "outlet", "power strip", "electrical panel"},
-        "context_sensitive": True
+        "context_sensitive": True,
+        "severity": "high"  # Increased severity for electrical hazards
     },
     "chemical_hazards": {
         "objects": {"bottle", "container", "spray", "tank"},
-        "context_sensitive": True
+        "context_sensitive": True,
+        "severity": "high"
     },
     "obstacles": {
-        "objects": set(),  # Will be populated with any object in walkways
-        "proximity_threshold": 100  # pixels - distance to consider as obstacle
+        "objects": {"chair", "box", "equipment", "furniture"},  # Common workplace obstacles
+        "proximity_threshold": 100,  # pixels - distance to consider as obstacle
+        "severity": "high"  # High severity for obstacles in walkways
     }
 }
 
@@ -92,21 +103,52 @@ HAZARD_COMBINATIONS = [
     {"person", "person", "scaffold"},
 ]
 
-def is_object_held_safely(box1, box2, safe_distance=50):
+def calculate_box_overlap(box1, box2):
     """
-    Determine if an object is being held safely by checking spatial relationship
-    between the hand/person and the object
+    Calculate how much box1 overlaps with box2.
+    Returns the percentage of box1 that is inside box2.
     """
-    x1_hand = (box1["box"][0] + box1["box"][2]) / 2
-    y1_hand = (box1["box"][1] + box1["box"][3]) / 2
-    x2_obj = (box2["box"][0] + box2["box"][2]) / 2
-    y2_obj = (box2["box"][1] + box2["box"][3]) / 2
+    # Get coordinates
+    x1_min, y1_min = box1["box"][0], box1["box"][1]
+    x1_max, y1_max = box1["box"][2], box1["box"][3]
+    x2_min, y2_min = box2["box"][0], box2["box"][1]
+    x2_max, y2_max = box2["box"][2], box2["box"][3]
     
-    # Calculate distance between centers
-    distance = np.sqrt((x1_hand - x2_obj)**2 + (y1_hand - y2_obj)**2)
+    # Calculate intersection
+    x_left = max(x1_min, x2_min)
+    y_top = max(y1_min, y2_min)
+    x_right = min(x1_max, x2_max)
+    y_bottom = min(y1_max, y2_max)
     
-    # Check if hand is near object
-    return distance <= safe_distance
+    if x_right < x_left or y_bottom < y_top:
+        return 0.0
+    
+    # Calculate areas
+    intersection_area = (x_right - x_left) * (y_bottom - y_top)
+    box1_area = (x1_max - x1_min) * (y1_max - y1_min)
+    
+    # Return percentage of box1 that overlaps with box2
+    return intersection_area / box1_area if box1_area > 0 else 0.0
+
+def is_object_held_safely(person_or_hand_box, object_box, overlap_threshold=0.3):
+    """
+    Determine if an object is being held safely by checking if it overlaps significantly
+    with a person or hand bounding box
+    """
+    # If it's a hand detection, use the original distance check
+    if person_or_hand_box["label"] == "hand":
+        x1_hand = (person_or_hand_box["box"][0] + person_or_hand_box["box"][2]) / 2
+        y1_hand = (person_or_hand_box["box"][1] + person_or_hand_box["box"][3]) / 2
+        x2_obj = (object_box["box"][0] + object_box["box"][2]) / 2
+        y2_obj = (object_box["box"][1] + object_box["box"][3]) / 2
+        
+        # Calculate distance between centers
+        distance = np.sqrt((x1_hand - x2_obj)**2 + (y1_hand - y2_obj)**2)
+        return distance <= 50  # Original safe distance for hands
+    
+    # For person detection, check box overlap
+    overlap = calculate_box_overlap(object_box, person_or_hand_box)
+    return overlap >= overlap_threshold
 
 def analyze_spatial_relationships(boxes):
     """
@@ -190,7 +232,7 @@ def classify_hazard(labels, boxes):
     label_set = set(labels)
     hazard_types = []
     severity = "low"
-    is_hazardous = False  # Initialize is_hazardous at the start
+    is_hazardous = False
     
     try:
         # First check for inherently hazardous objects
@@ -198,7 +240,7 @@ def classify_hazard(labels, boxes):
             if rules.get("always_hazard", False):
                 if any(obj in label_set for obj in rules["objects"]):
                     hazard_types.append(category)
-                    severity = "high"
+                    severity = rules.get("severity", "high")
                     is_hazardous = True
         
         # Analyze spatial relationships for context-sensitive hazards
@@ -208,45 +250,44 @@ def classify_hazard(labels, boxes):
         for hazard in spatial_hazards:
             if hazard["type"] not in hazard_types:
                 hazard_types.append(hazard["type"])
-            if hazard["severity"] == "high":
+            if hazard["severity"] == "critical":
+                severity = "critical"
+            elif hazard["severity"] == "high" and severity not in ["critical"]:
                 severity = "high"
-            elif hazard["severity"] == "medium" and severity != "high":
+            elif hazard["severity"] == "medium" and severity not in ["critical", "high"]:
                 severity = "medium"
             is_hazardous = True
         
-        # Check for unhandled sharp objects
-        for label in labels:
-            if label in HAZARD_CATEGORIES["sharp_objects"]["objects"]:
-                # Check if there's a hand nearby in the boxes
+        # Simplified handling for sharp objects (especially knives)
+        for box in boxes:
+            if box["label"] in HAZARD_CATEGORIES["sharp_objects"]["objects"]:
+                # Check if there's proper handling context
                 has_proper_handling = False
-                for box in boxes:
-                    if box["label"] == "hand":
-                        for other_box in boxes:
-                            if other_box["label"] == label:
-                                if is_object_held_safely(box, other_box):
-                                    has_proper_handling = True
-                                    break
+                
+                for other_box in boxes:
+                    if other_box["label"] in ["hand", "person"]:
+                        if is_object_held_safely(other_box, box):
+                            has_proper_handling = True
+                            break
                 
                 if not has_proper_handling:
+                    # Only flag as hazard if unattended
                     hazard_types.append("unattended_sharp_object")
-                    severity = max(severity, "medium")
+                    severity = "critical"
                     is_hazardous = True
         
-        # Check for obstacles in walkways
+        # Check for obstacles and trip hazards
         for box in boxes:
-            if (box["label"] not in ["wall", "floor", "ceiling"] and 
-                box["label"] not in [h["objects"][0] for h in hazard_types]):
-                # Add as general obstacle if not already classified as another hazard
-                hazard_types.append({
-                    "type": "obstacle",
-                    "objects": [box["label"]],
-                    "severity": "low"
-                })
+            if (box["label"] in HAZARD_CATEGORIES["obstacles"]["objects"] or
+                box["label"] in HAZARD_CATEGORIES["trip_hazards"]["objects"]):
+                # Any obstacle or trip hazard is considered high severity
+                hazard_types.append("workplace_obstacle")
+                if severity not in ["critical"]:
+                    severity = "high"
                 is_hazardous = True
                 
     except Exception as e:
         print(f"Error in hazard classification: {str(e)}")
-        # Return safe defaults in case of error
         return False, [], "low"
     
     return is_hazardous, hazard_types, severity
