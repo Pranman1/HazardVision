@@ -3,17 +3,67 @@ const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d');
 const table = document.getElementById('logTable');
 let isRunning = false;
-let detectionInterval = null;
+let ws = null;
 
 // FPS tracking
 let frameCount = 0;
 let lastFpsUpdate = Date.now();
 const fpsDisplay = document.getElementById('fpsDisplay');
+let skipFrames = 2; // Process every 3rd frame
+let frameSkipCount = 0;
 
 // Detection settings
-const DETECTION_INTERVAL = 100; // 10 fps (1000ms / 100ms = 10) - more reasonable for processing
-const MAX_RETRIES = 3;
-let lastImageTimestamp = null;
+const RECONNECT_TIMEOUT = 3000; // 3 seconds
+
+// Audio feedback for hazards
+let audioContext = null;
+let lastAudioTime = 0;
+const AUDIO_COOLDOWN = 3000; // 3 seconds between alerts
+
+function createAudioContext() {
+    if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    return audioContext;
+}
+
+function playHazardAlert(severity) {
+    const now = Date.now();
+    if (now - lastAudioTime > AUDIO_COOLDOWN) {
+        const context = createAudioContext();
+        
+        // Create oscillator for beep
+        const oscillator = context.createOscillator();
+        const gainNode = context.createGain();
+        
+        // Set frequency based on severity
+        switch(severity) {
+            case 'high':
+                oscillator.frequency.setValueAtTime(880, context.currentTime); // A5
+                break;
+            case 'medium':
+                oscillator.frequency.setValueAtTime(440, context.currentTime); // A4
+                break;
+            default:
+                oscillator.frequency.setValueAtTime(220, context.currentTime); // A3
+        }
+        
+        // Connect nodes
+        oscillator.connect(gainNode);
+        gainNode.connect(context.destination);
+        
+        // Set volume envelope
+        gainNode.gain.setValueAtTime(0, context.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.5, context.currentTime + 0.1);
+        gainNode.gain.linearRampToValueAtTime(0, context.currentTime + 0.5);
+        
+        // Start and stop
+        oscillator.start(context.currentTime);
+        oscillator.stop(context.currentTime + 0.5);
+        
+        lastAudioTime = now;
+    }
+}
 
 // Helper function to create image elements with proper loading states
 function createImage(src, width = null) {
@@ -33,8 +83,6 @@ function createImage(src, width = null) {
         img.classList.remove("loading");
         img.classList.add("error");
         img.alt = "Failed to load image";
-        
-        // Just show error state instead of trying to load an error image
         img.style.backgroundColor = "#f8d7da";
         img.style.border = "1px solid #f5c6cb";
     };
@@ -44,41 +92,86 @@ function createImage(src, width = null) {
 }
 
 // Start camera
-navigator.mediaDevices.getUserMedia({ video: true })
-    .then(stream => {
-        video.srcObject = stream;
-        video.addEventListener('loadedmetadata', () => {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-        });
-    })
-    .catch(err => console.error("Camera error:", err));
+navigator.mediaDevices.getUserMedia({ 
+    video: { 
+        width: { ideal: 640 },
+        height: { ideal: 480 },
+        frameRate: { ideal: 30 }
+    } 
+})
+.then(stream => {
+    video.srcObject = stream;
+    video.addEventListener('loadedmetadata', () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+    });
+})
+.catch(err => console.error("Camera error:", err));
 
-// Toggle detection
-document.getElementById('toggleBtn').onclick = () => {
-    isRunning = !isRunning;
-    document.getElementById('toggleBtn').textContent = isRunning ? 'Stop Detection' : 'Start Detection';
-    
-    if (isRunning) {
-        // Reset FPS counter
-        frameCount = 0;
-        lastFpsUpdate = Date.now();
-        
-        // Start detection loop
-        detectionInterval = setInterval(detectFrame, DETECTION_INTERVAL);
-    } else {
-        // Stop detection loop
-        if (detectionInterval) {
-            clearInterval(detectionInterval);
-            detectionInterval = null;
-        }
-        // Clear FPS display
-        fpsDisplay.textContent = '';
-        // Clear detection view
-        document.getElementById('annotatedImg').src = '';
-        document.getElementById('hazardInfo').innerHTML = '';
+function connectWebSocket() {
+    if (ws) {
+        ws.close();
     }
-};
+    
+    ws = new WebSocket('ws://localhost:8000/ws');
+    
+    ws.onopen = () => {
+        console.log('WebSocket connected');
+        if (isRunning) {
+            startDetection();
+        }
+    };
+    
+    ws.onclose = () => {
+        console.log('WebSocket disconnected');
+        setTimeout(connectWebSocket, RECONNECT_TIMEOUT);
+    };
+    
+    ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
+    };
+    
+    ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        
+        // Update hazard info display
+        updateHazardInfo(data);
+        
+        // Update detection image
+        const annotatedImg = document.getElementById('annotatedImg');
+        if (!annotatedImg) return;
+        
+        // Create new image from base64 data
+        annotatedImg.src = 'data:image/jpeg;base64,' + data.frame;
+        
+        // Play alert if hazardous
+        if (data.is_hazardous) {
+            playHazardAlert(data.severity);
+            
+            // Add to log
+            const table = document.getElementById('logTable');
+            if (!table) return;
+
+            const tbody = table.querySelector('tbody') || table;
+            const row = tbody.insertRow(0);
+            row.insertCell().innerText = data.timestamp;
+            row.insertCell().innerText = data.labels.join(", ");
+            row.insertCell().innerText = data.hazard_types.join(", ");
+            
+            const severityCell = row.insertCell();
+            severityCell.innerHTML = `<span class="severity-${data.severity}">${data.severity.toUpperCase()}</span>`;
+            
+            const imgCell = row.insertCell();
+            const img = document.createElement('img');
+            img.src = 'data:image/jpeg;base64,' + data.frame;
+            img.width = 100;
+            imgCell.appendChild(img);
+        }
+        
+        // Update FPS
+        updateFPS();
+    };
+}
 
 // Update FPS display
 function updateFPS() {
@@ -94,15 +187,63 @@ function updateFPS() {
     }
 }
 
+function startDetection() {
+    if (!ws || ws.readyState !== WebSocket.OPEN) {
+        connectWebSocket();
+        return;
+    }
+    
+    // Process frame
+    ctx.drawImage(video, 0, 0);
+    
+    // Skip frames to reduce load
+    if (frameSkipCount++ % skipFrames === 0) {
+        // Convert to base64
+        const frame = canvas.toDataURL('image/jpeg', 0.8);
+        
+        // Send to server
+        ws.send(JSON.stringify({ frame }));
+    }
+    
+    if (isRunning) {
+        requestAnimationFrame(startDetection);
+    }
+}
+
+// Toggle detection
+document.getElementById('toggleBtn').onclick = () => {
+    isRunning = !isRunning;
+    document.getElementById('toggleBtn').textContent = isRunning ? 'Stop Detection' : 'Start Detection';
+    
+    if (isRunning) {
+        // Reset FPS counter
+        frameCount = 0;
+        lastFpsUpdate = Date.now();
+        
+        // Start detection
+        startDetection();
+    } else {
+        // Clear detection view
+        document.getElementById('annotatedImg').src = '';
+        document.getElementById('hazardInfo').innerHTML = '';
+        fpsDisplay.textContent = '';
+        
+        // Close WebSocket
+        if (ws) {
+            ws.close();
+        }
+    }
+};
+
 // Update hazard info display
 function updateHazardInfo(data) {
     const hazardInfo = document.getElementById('hazardInfo');
-    if (!hazardInfo) return;  // Guard against missing element
+    if (!hazardInfo) return;
 
     // Clear previous content
     hazardInfo.innerHTML = '';
 
-    // Create hazard types and severity divs if they don't exist
+    // Create hazard types and severity divs
     const hazardTypes = document.createElement('div');
     hazardTypes.id = 'hazardTypes';
     const hazardSeverity = document.createElement('div');
@@ -127,125 +268,3 @@ function updateHazardInfo(data) {
         hazardTypes.innerHTML = '<strong>No hazards detected</strong>';
     }
 }
-
-// Process a single frame
-async function detectFrame() {
-    if (!isRunning) return;
-
-    // Update FPS counter
-    updateFPS();
-
-    try {
-        // Draw video frame to canvas
-        ctx.drawImage(video, 0, 0);
-        
-        // Convert to blob and send to backend
-        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.95));
-        const form = new FormData();
-        form.append("file", blob, "snapshot.jpg");
-
-        const res = await fetch("http://localhost:8000/snapshot/", {
-            method: "POST",
-            body: form,
-            headers: {
-                'Cache-Control': 'no-cache',
-                'Pragma': 'no-cache'
-            }
-        });
-
-        if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
-        }
-
-        const data = await res.json();
-        
-        // Check if this is a new frame
-        if (data.timestamp === lastImageTimestamp) {
-            console.log("Received duplicate frame, skipping update");
-            return;
-        }
-        lastImageTimestamp = data.timestamp;
-        
-        // Update hazard info display
-        updateHazardInfo(data);
-
-        // Create image URL with stronger cache-busting
-        const cacheBuster = Date.now() + Math.random();
-        const imageUrl = `http://localhost:8000/snapshots/${data.timestamp}.jpg?nocache=${cacheBuster}`;
-
-        // Update live view with annotated image
-        const annotatedImg = document.getElementById('annotatedImg');
-        if (!annotatedImg) return;  // Guard against missing element
-
-        // Create new image and wait for it to load before replacing
-        const newImg = createImage(imageUrl);
-        newImg.id = 'annotatedImg';
-        
-        // Only replace once loaded
-        newImg.onload = function() {
-            annotatedImg.parentNode.replaceChild(newImg, annotatedImg);
-        };
-
-        // Handle load failure with retries
-        let retryCount = 0;
-        newImg.onerror = async function() {
-            if (retryCount < MAX_RETRIES) {
-                retryCount++;
-                console.log(`Retrying image load (${retryCount}/${MAX_RETRIES})`);
-                // Add random delay before retry
-                await new Promise(resolve => setTimeout(resolve, 100 * retryCount));
-                // Try with both original and annotated filenames
-                const retryUrl = retryCount % 2 === 0 ? 
-                    `http://localhost:8000/snapshots/${data.timestamp}.jpg?retry=${retryCount}` :
-                    `http://localhost:8000/snapshots/${data.timestamp}_annotated.jpg?retry=${retryCount}`;
-                newImg.src = retryUrl;
-            } else {
-                console.error(`Failed to load image after ${MAX_RETRIES} retries`);
-                newImg.classList.add('error');
-                newImg.alt = 'Detection failed';
-            }
-        };
-        
-        // Only add to log if hazards detected
-        if (data.is_hazardous) {
-            const table = document.getElementById('logTable');
-            if (!table) return;  // Guard against missing element
-
-            const tbody = table.querySelector('tbody') || table;
-            const row = tbody.insertRow(0);  // Insert at top of table
-            row.insertCell().innerText = data.timestamp;
-            row.insertCell().innerText = data.labels.join(", ");
-            row.insertCell().innerText = data.hazard_types.join(", ");
-            
-            const severityCell = row.insertCell();
-            severityCell.innerHTML = `<span class="severity-${data.severity}">${data.severity.toUpperCase()}</span>`;
-            
-            const imgCell = row.insertCell();
-            const img = createImage(imageUrl, 100);
-            imgCell.appendChild(img);
-        }
-
-    } catch (err) {
-        console.error("Detection error:", err);
-        
-        // Show error in hazard info
-        const hazardInfo = document.getElementById('hazardInfo');
-        if (hazardInfo) {
-            hazardInfo.innerHTML = `<div class="error">Detection Error: ${err.message}</div>`;
-        }
-        
-        // Clear or show error state for annotated image
-        const annotatedImg = document.getElementById('annotatedImg');
-        if (annotatedImg) {
-            annotatedImg.classList.add('error');
-            annotatedImg.alt = 'Detection failed';
-        }
-    }
-}
-
-// Add error handling for annotated image
-document.getElementById('annotatedImg').onerror = function() {
-  console.error(`Failed to load annotated image: ${this.src}`);
-  this.src = '/static/error-image.png';  // Fallback image
-  this.alt = 'Detection image failed to load';
-};
