@@ -23,6 +23,13 @@ const AUDIO_COOLDOWN = 3000; // 3 seconds between alerts
 // Audio handling
 let currentAudio = null;
 
+// Add message timeout tracking
+let messageTimeout = null;
+let lastHazardTime = null;
+const MESSAGE_DISPLAY_TIME = 45000; // 45 seconds for hazard messages
+const FADE_OUT_TIME = 5000; // 5 seconds fade out transition
+const NO_HAZARD_COOLDOWN = 30000; // Wait 30 seconds before allowing "No hazards" state
+
 function createAudioContext() {
     if (!audioContext) {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -292,33 +299,80 @@ document.getElementById('toggleBtn').onclick = () => {
 // Update hazard info display
 function updateHazardInfo(data) {
     const hazardInfo = document.getElementById('hazardInfo');
-    if (!hazardInfo) return;
-
-    // Clear previous content
-    hazardInfo.innerHTML = '';
-
-    // Create hazard types and severity divs
-    const hazardTypes = document.createElement('div');
-    hazardTypes.id = 'hazardTypes';
-    const hazardSeverity = document.createElement('div');
-    hazardSeverity.id = 'hazardSeverity';
+    const hazardTypes = document.getElementById('hazardTypes');
+    const hazardSeverity = document.getElementById('hazardSeverity');
+    const videoWrapper = document.querySelector('.video-wrapper');
     
-    hazardInfo.appendChild(hazardTypes);
-    hazardInfo.appendChild(hazardSeverity);
-
-    // Remove previous severity class
-    hazardInfo.classList.remove('high', 'medium', 'low');
-
+    if (!hazardInfo || !hazardTypes || !hazardSeverity) return;
+    
+    // Remove any existing hazard classes from video wrapper
+    videoWrapper.classList.remove('critical-hazard', 'high-hazard', 'medium-hazard', 'low-hazard');
+    
     if (data.is_hazardous) {
-        // Add severity class
-        hazardInfo.classList.add(data.severity);
+        // Update last hazard time
+        lastHazardTime = Date.now();
         
-        // Show hazard types
-        hazardTypes.innerHTML = `<strong>Hazard Types:</strong> ${data.hazard_types.join(', ')}`;
+        // Clear any existing timeout
+        if (messageTimeout) {
+            clearTimeout(messageTimeout);
+        }
         
-        // Show severity
-        hazardSeverity.innerHTML = `<strong>Severity:</strong> <span class="severity-${data.severity}">${data.severity.toUpperCase()}</span>`;
+        // Update hazard info classes
+        hazardInfo.className = 'hazard-info ' + data.severity;
+        
+        // Set content based on hazard analysis or types
+        if (data.hazard_analysis && data.hazard_analysis.analysis) {
+            hazardTypes.innerHTML = `
+                <div class="hazard-message">
+                    ${data.hazard_analysis.analysis}
+                </div>`;
+            hazardSeverity.innerHTML = `
+                <div class="hazard-message">
+                    <strong>Severity: ${data.severity.toUpperCase()}</strong>
+                </div>`;
+        } else {
+            hazardTypes.innerHTML = `
+                <div class="hazard-message">
+                    <strong>${data.severity.toUpperCase()} HAZARD DETECTED</strong><br>
+                    ${data.hazard_types.join(", ")}
+                </div>`;
+            hazardSeverity.innerHTML = '';
+        }
+        
+        // Add outline to video wrapper based on severity
+        videoWrapper.classList.add(`${data.severity}-hazard`);
+        
+        // Set timeout to fade out message
+        messageTimeout = setTimeout(() => {
+            const messages = hazardInfo.querySelectorAll('.hazard-message');
+            messages.forEach(message => {
+                message.classList.add('fade-out');
+            });
+            
+            // Only clear the messages after fade-out completes
+            setTimeout(() => {
+                if (!data.is_hazardous && Date.now() - lastHazardTime > NO_HAZARD_COOLDOWN) {
+                    hazardTypes.innerHTML = '';
+                    hazardSeverity.innerHTML = '';
+                    hazardInfo.className = 'hazard-info';
+                }
+            }, FADE_OUT_TIME);
+        }, MESSAGE_DISPLAY_TIME);
+        
     } else {
-        hazardTypes.innerHTML = '<strong>No hazards detected</strong>';
+        // Only show "No hazards" if we're past the cooldown period
+        const timeSinceLastHazard = lastHazardTime ? Date.now() - lastHazardTime : Infinity;
+        
+        if (timeSinceLastHazard > NO_HAZARD_COOLDOWN) {
+            // Don't immediately clear if we're fading out
+            const hasFadingMessage = hazardInfo.querySelector('.hazard-message.fade-out');
+            if (!hasFadingMessage) {
+                hazardTypes.innerHTML = '';
+                hazardSeverity.innerHTML = '';
+                hazardInfo.className = 'hazard-info';
+                videoWrapper.classList.remove('critical-hazard', 'high-hazard', 'medium-hazard', 'low-hazard');
+            }
+        }
+        // If we're within cooldown, keep showing the last hazard state
     }
 }
