@@ -313,7 +313,7 @@ def classify_hazard(labels, boxes):
         for obj in HAZARD_CATEGORIES["sharp_objects"]["objects"]:
             if obj in labels:
                 if not is_hazard_in_cooldown("unattended_sharp_objects"):
-                    hazard_types.append("unattended_sharp_object")
+                    hazard_types.append("unattended sharp object")
                     update_hazard_timestamp("unattended_sharp_objects")
                     max_severity = "critical"
                     critical_alert_count += 1

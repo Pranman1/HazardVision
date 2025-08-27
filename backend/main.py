@@ -35,6 +35,13 @@ app.add_middleware(
 app.mount("/static", StaticFiles(directory="../frontend/static"), name="static")
 app.mount("/snapshots", StaticFiles(directory="../snapshots"), name="snapshots")
 
+# Serve frontend
+from fastapi.responses import FileResponse
+
+@app.get("/")
+async def read_root():
+    return FileResponse("../frontend/public/index.html")
+
 # Initialize model with GPU if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
